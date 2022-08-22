@@ -126,12 +126,10 @@ export interface Playback extends AV {
      */
     setRateAsync(rate: number, shouldCorrectPitch: boolean, pitchCorrectionQuality?: PitchCorrectionQuality): Promise<AVPlaybackStatus>;
     /**
-     * This is equivalent to `playbackObject.setStatusAsync({ volume, audioPan })`.
-     * Note: `audioPan` is currently only supported on Android using `androidImplementation: 'MediaPlayer'`
+     * This is equivalent to `playbackObject.setStatusAsync({ volume })`.
      * @param volume A number between `0.0` (silence) and `1.0` (maximum volume).
-     * @param audioPan A number between `-1.0` (full left) and `1.0` (full right).
      */
-    setVolumeAsync(volume: number, audioPan?: number): Promise<AVPlaybackStatus>;
+    setVolumeAsync(volume: number): Promise<AVPlaybackStatus>;
     /**
      * This is equivalent to `playbackObject.setStatusAsync({ isMuted })`.
      * @param isMuted A boolean describing if the audio of this media should be muted.
@@ -161,7 +159,7 @@ export declare const PlaybackMixin: {
     stopAsync(): Promise<AVPlaybackStatus>;
     setPositionAsync(positionMillis: number, tolerances?: AVPlaybackTolerance): Promise<AVPlaybackStatus>;
     setRateAsync(rate: number, shouldCorrectPitch?: boolean, pitchCorrectionQuality?: PitchCorrectionQuality): Promise<AVPlaybackStatus>;
-    setVolumeAsync(volume: number, audioPan?: number | undefined): Promise<AVPlaybackStatus>;
+    setVolumeAsync(volume: number): Promise<AVPlaybackStatus>;
     setIsMutedAsync(isMuted: boolean): Promise<AVPlaybackStatus>;
     setIsLoopingAsync(isLooping: boolean): Promise<AVPlaybackStatus>;
     setProgressUpdateIntervalAsync(progressUpdateIntervalMillis: number): Promise<AVPlaybackStatus>;

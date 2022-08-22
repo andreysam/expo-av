@@ -164,10 +164,6 @@ export declare type AVPlaybackStatusSuccess = {
      */
     isMuted: boolean;
     /**
-     * The current audio panning value of the audio for this media.
-     */
-    audioPan: number;
-    /**
      * A boolean describing if the media is currently looping.
      */
     isLooping: boolean;
@@ -226,13 +222,6 @@ export declare type AVPlaybackStatusToSet = {
      * > Note that this only affect the audio of this `playbackObject` and do NOT affect the system volume.
      */
     isMuted?: boolean;
-    /**
-     * The current audio panning value of the audio for this media.
-     * > Note that this only affect the audio of this `playbackObject` and do NOT affect the system volume.
-     * > Also note that this is only available when the video was loaded using `androidImplementation: 'MediaPlayer'`
-     * @platform android
-     */
-    audioPan?: number;
     /**
      * A boolean describing if the media is currently looping.
      */

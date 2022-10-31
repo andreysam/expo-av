@@ -109,7 +109,7 @@ class SimpleExoPlayerData extends PlayerData
         .createFactory(
             mReactContext,
             mAVModule.getModuleRegistry(),
-            Util.getUserAgent(context, context.getApplicationInfo().loadLabel(context.getPackageManager()).toString()),
+            Util.getUserAgent(context, null),
             mRequestHeaders,
             bandwidthMeter.getTransferListener());
     try {

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ImageProps, ViewProps } from 'react-native';
+import { ImageProps, ViewProps, StyleProp, ViewStyle } from 'react-native';
 
 import {
   AVPlaybackNativeSource,
@@ -119,11 +119,15 @@ export type VideoProps = {
    * An optional property to pass custom styles to the poster image.
    */
   posterStyle?: ImageProps['style'];
+  /**
+   * An optional property to pass custom styles to the internal video component.
+   */
+  videoStyle?: StyleProp<ViewStyle>;
 
   // Callbacks
   /**
    * A function to be called regularly with the `AVPlaybackStatus` of the video. You will likely be using this a lot.
-   * See the [AV documentation](av.md) for further information on `onPlaybackStatusUpdate`, and the interval at which it is called.
+   * See the [AV documentation](./av) for further information on `onPlaybackStatusUpdate`, and the interval at which it is called.
    * @param status
    */
   onPlaybackStatusUpdate?: (status: AVPlaybackStatus) => void;
@@ -171,6 +175,13 @@ export type VideoProps = {
    * A boolean which, if set to `true`, will display an image (whose source is set via the prop `posterSource`) while the video is loading.
    */
   usePoster?: boolean;
+  /**
+   * A react-native `Image` like component to display the poster image.
+   */
+  PosterComponent?: React.ComponentType<{
+    style: ImageProps['style'];
+    source: ImageProps['source'];
+  }>;
 
   // Playback API
   /**
@@ -216,6 +227,11 @@ export type VideoProps = {
    */
   isMuted?: boolean;
   /**
+   * The desired audio panning value of the audio for this media. This value must be between `-1.0` (full left) and `1.0` (full right).
+   * See the [AV documentation](./av) for more information.
+   */
+  audioPan?: number;
+  /**
    * A boolean describing if the media should play once (`false`) or loop indefinitely (`true`).
    * See the [AV documentation](./av) for more information.
    */
@@ -258,6 +274,7 @@ export type VideoNativeProps = {
   onReadyForDisplay?: (event: { nativeEvent: VideoReadyForDisplayEvent }) => void;
   onFullscreenUpdate?: (event: { nativeEvent: VideoFullscreenUpdateEvent }) => void;
   useNativeControls?: boolean;
+  videoStyle?: StyleProp<ViewStyle>;
 } & ViewProps;
 
 // @docsMissing

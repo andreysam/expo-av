@@ -13,14 +13,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.google.android.exoplayer2.C;
-import com.google.android.exoplayer2.ExoPlaybackException;
 import com.google.android.exoplayer2.MediaItem;
 import com.google.android.exoplayer2.PlaybackException;
 import com.google.android.exoplayer2.PlaybackParameters;
 import com.google.android.exoplayer2.Player;
 import com.google.android.exoplayer2.SimpleExoPlayer;
 import com.google.android.exoplayer2.database.ExoDatabaseProvider;
-import com.google.android.exoplayer2.source.ExtractorMediaSource;
 import com.google.android.exoplayer2.source.LoadEventInfo;
 import com.google.android.exoplayer2.source.MediaLoadData;
 import com.google.android.exoplayer2.source.MediaSource;
@@ -135,7 +133,7 @@ class SimpleExoPlayerData extends PlayerData
         cacheDataSourceFactory.setFlags(CacheDataSource.FLAG_BLOCK_ON_CACHE + CacheDataSource.FLAG_IGNORE_CACHE_ON_ERROR);
 
         // This is the MediaSource representing the media to be played.
-        source = new ProgressiveMediaSource.Factory(cacheDataSourceFactory).createMediaSource(mUri);
+        source = new ProgressiveMediaSource.Factory(cacheDataSourceFactory).createMediaSource(MediaItem.fromUri(mUri));
       } else {
         source = buildMediaSource(mUri, mOverridingExtension, dataSourceFactory);
       }

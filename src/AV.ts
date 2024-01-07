@@ -107,7 +107,11 @@ export function getNativeSourceFromSource(
   ) {
     headers = source.headers;
   }
-  return { uri, overridingExtension, headers };
+  return { 
+    uri, 
+    ...(!!overridingExtension && { overridingExtension }),
+    ...(!!headers && { headers }), 
+  };
 }
 
 function _getAssetFromPlaybackSource(source?: AVPlaybackSource | null): Asset | null {

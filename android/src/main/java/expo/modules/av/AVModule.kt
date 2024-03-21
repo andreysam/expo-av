@@ -112,6 +112,10 @@ class AVModule : Module() {
     AsyncFunction("getPermissionsAsync") { promise: KotlinPromise ->
       Permissions.getPermissionsWithPermissionsManager(appContext.permissions, promise, Manifest.permission.RECORD_AUDIO)
     }
+
+    Function("addListener") {}
+
+    Function("removeListeners") {}
   }
 }
 
